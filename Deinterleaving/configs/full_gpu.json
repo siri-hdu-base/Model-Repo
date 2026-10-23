@@ -1,0 +1,21 @@
+{
+  "data_root": "../../turing-synthetic-radar-dataset",
+  "subsets": ["scan/test", "stare/test"],
+  "max_files": null, "window_us": 100000, "windows_per_file": 10, "seeds": [0, 1, 2],
+  "algorithms": "all", "scenarios": "all", "output": "results/full_gpu",
+  "profile_dir": "results/profiles_formal", "profile_files": null, "profile_rows_per_file": 5000,
+  "checkpoint_dir": "results/models_formal", "require_formal_checkpoint": true,
+  "timeout_seconds": 300, "memory_mb": 8192, "max_pulses": 20000, "device": "cuda",
+  "algorithm_params": {
+    "common": {"pri_min_us": 2, "pri_max_us": 5000, "bin_us": 2, "min_chain": 5, "strict_papers_only": true},
+    "sapd": {"initial_candidates": 512, "max_hypotheses": 20000},
+    "cascaded": {"pri_step_us": 2}
+  },
+  "training": {
+    "modes": ["scan", "stare"], "algorithms": ["gru", "tcn", "transformer"],
+    "scope": "formal", "device": "cuda", "threads": 4, "seeds": [0, 1, 2],
+    "train_files": null, "val_files": null, "windows_per_file": 10, "window_us": 100000,
+    "chunk_pulses": 256, "max_train_chunks": 1000000, "max_val_chunks": 1000000,
+    "epochs": 50, "width": 64, "embedding": 32, "learning_rate": 0.001
+  }
+}

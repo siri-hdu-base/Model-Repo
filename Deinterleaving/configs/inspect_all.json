@@ -1,0 +1,6 @@
+{
+  "data_root": "../../turing-synthetic-radar-dataset",
+  "subsets": ["all"],
+  "max_files": null,
+  "output": "results/data_audit"
+}

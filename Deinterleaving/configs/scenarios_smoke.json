@@ -1,0 +1,15 @@
+{
+  "data_root": "../../turing-synthetic-radar-dataset",
+  "subsets": ["scan/test"], "files": ["config_1.h5"],
+  "window_us": 100000, "windows_per_file": 1, "seeds": [0],
+  "algorithms": "all", "scenarios": "all",
+  "output": "results/scenarios_smoke",
+  "profile_dir": "results/profiles_smoke", "profile_files": 6, "profile_rows_per_file": 1000,
+  "checkpoint_dir": "results/models_smoke",
+  "timeout_seconds": 10, "memory_mb": 2048, "max_pulses": 3000, "device": "cpu",
+  "algorithm_params": {
+    "common": {"pri_min_us": 2, "pri_max_us": 2000, "bin_us": 2, "min_chain": 5},
+    "sapd": {"initial_candidates": 64, "max_hypotheses": 5000},
+    "cascaded": {"pri_step_us": 5}
+  }
+}

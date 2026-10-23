@@ -1,0 +1,32 @@
+{
+  "data_root": "../../turing-synthetic-radar-dataset",
+  "subsets": ["scan/train", "scan/val", "scan/test", "stare/train", "stare/val", "stare/test"],
+  "files": ["config_1.h5"],
+  "max_files": null,
+  "window_us": 100000,
+  "windows_per_file": 3,
+  "seeds": [0],
+  "algorithms": "all",
+  "scenarios": [{"name": "baseline"}, {"name": "dense"}, {"name": "snr", "level": 0}],
+  "output": "results/smoke",
+  "profile_dir": "results/profiles_smoke",
+  "profile_files": 6,
+  "profile_rows_per_file": 1000,
+  "checkpoint_dir": "results/models_smoke",
+  "timeout_seconds": 15,
+  "memory_mb": 2048,
+  "max_pulses": 3000,
+  "device": "cpu",
+  "algorithm_params": {
+    "common": {"pri_min_us": 2, "pri_max_us": 2000, "bin_us": 2, "min_chain": 5},
+    "sapd": {"initial_candidates": 64, "max_hypotheses": 5000},
+    "cascaded": {"pri_step_us": 5}
+  },
+  "training": {
+    "modes": ["scan", "stare"], "algorithms": ["gru", "tcn", "transformer"],
+    "scope": "smoke", "device": "cpu", "threads": 2, "seeds": [0],
+    "train_files": 6, "val_files": 6, "windows_per_file": 3, "window_us": 100000,
+    "chunk_pulses": 256, "max_train_chunks": 12, "max_val_chunks": 6,
+    "epochs": 3, "width": 64, "embedding": 32, "learning_rate": 0.001
+  }
+}
